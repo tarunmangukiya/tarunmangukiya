@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tarun Mangukiya&#39;s GitHub by tarunmangukiya</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Tarun Mangukiya&#39;s GitHub</h1>
+      <h2 class="project-tagline">jQuery Ajax Library</h2>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="jquery-ajax-library" class="anchor" href="#jquery-ajax-library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>jQuery Ajax Library</h1>
+
+<p>A light-weight jQuery Library to enhance the existing ajax tasks. It provides different libraries such as Ajax Form, Ajax File Upload, Ajax Link, etc. It uses both client and server side to successfully submit and manipulate the existing forms.</p>
+
+<p>Contains the following Library for advanced ajax support</p>
+
+<ul>
+<li>AjaxForm</li>
+<li>VirtualAjaxForm (Documentation writing is pending, you can have a look at example on how to use it)</li>
+</ul>
+
+<h2>
+<a id="ajaxform" class="anchor" href="#ajaxform" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AjaxForm</h2>
+
+<p>AjaxForm modifies existing html form into a advanced AjaxHelper AjaxForm. Using AjaxForm you can not only make the form ajax but also add the advanced functionalities like displaying errors, information messages, update the parts of page in case of success, redirect between pages, etc.</p>
+
+<p>AjaxForm supports <a href="http://jqueryvalidation.org/">jQuery Validation Plugin</a> and Bootstrap Validator for validation. You can even define error messages from server side and the messages will be displayed in the your respective validation format.</p>
+
+<h3>
+<a id="use" class="anchor" href="#use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use</h3>
+
+<h4>
+<a id="client-side" class="anchor" href="#client-side" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Client Side</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-k">function</span>(){
+  <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#form<span class="pl-pds">"</span></span>).<span class="pl-en">ajaxForm</span>(options);
+});</pre></div>
+
+<h4>
+<a id="server-side-response" class="anchor" href="#server-side-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Server Side Response</h4>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">{</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span> : <span class="pl-s"><span class="pl-pds">"</span>success|error<span class="pl-pds">"</span></span>,</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span> : <span class="pl-s"><span class="pl-pds">"</span>Form Submitted Successfully.<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">}</span></pre></div>
+
+<h3>
+<a id="options---client-side" class="anchor" href="#options---client-side" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options - Client Side</h3>
+
+<p>Here the options may have the following options:</p>
+
+<div class="highlight highlight-source-js"><pre>options <span class="pl-k">=</span> {
+    validatorType<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>null|jQueryValidation|BootstrapValidator<span class="pl-pds">'</span></span>,
+    action<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>,
+    type<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>POST<span class="pl-pds">'</span></span>,
+    loadingClass<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>ajax-loading<span class="pl-pds">'</span></span>,
+    message<span class="pl-k">:</span> {
+        pre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>&lt;div class="alert alert-info" role="alert"&gt;<span class="pl-pds">'</span></span>,
+        post<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>&lt;/div&gt;<span class="pl-pds">'</span></span>
+    },
+    error <span class="pl-k">:</span> {
+        pre<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>&lt;div class="alert alert-danger" role="alert"&gt;<span class="pl-pds">'</span></span>,
+        post<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>&lt;/div&gt;<span class="pl-pds">'</span></span>
+    }
+    <span class="pl-en">beforeSubmit</span><span class="pl-k">:</span> <span class="pl-k">function</span>(<span class="pl-smi">element</span>) { },
+    <span class="pl-en">afterSubmit</span><span class="pl-k">:</span> <span class="pl-k">function</span>(<span class="pl-smi">response</span><span class="pl-k">|</span><span class="pl-smi">jqXHR</span>, <span class="pl-smi">element</span>) { },
+    <span class="pl-en">errorPlacement</span><span class="pl-k">:</span> <span class="pl-k">function</span>(<span class="pl-smi">error</span>, <span class="pl-smi">element</span>) { },
+    <span class="pl-en">messagePlacement</span><span class="pl-k">:</span> <span class="pl-k">function</span>(<span class="pl-smi">message</span>, <span class="pl-smi">element</span>) { },
+    <span class="pl-en">onSuccess</span><span class="pl-k">:</span> <span class="pl-k">function</span>(<span class="pl-smi">response</span>, <span class="pl-smi">element</span>) { },
+    <span class="pl-en">onError</span><span class="pl-k">:</span> <span class="pl-k">function</span>(<span class="pl-smi">response</span>, <span class="pl-smi">element</span>) { },
+    <span class="pl-en">onFail</span><span class="pl-k">:</span> <span class="pl-k">function</span>(<span class="pl-smi">jqXHR</span>, <span class="pl-smi">element</span>) { }
+ }</pre></div>
+
+<h5>
+<a id="validatortype" class="anchor" href="#validatortype" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>validatorType:</h5>
+
+<p>Validator that you have used in the form <code>[null|jQueryValidation|BootstrapValidator]</code></p>
+
+<h5>
+<a id="action" class="anchor" href="#action" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>action:</h5>
+
+<p>URL to which Form has to be submitted</p>
+
+<h5>
+<a id="type" class="anchor" href="#type" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>type:</h5>
+
+<p>type of request <code>[GET|POST]</code></p>
+
+<h5>
+<a id="loadingclass" class="anchor" href="#loadingclass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>loadingClass:</h5>
+
+<p>Name of Class that will be assigned to form element when the form ajax is processing. Can be used to put a loading indicator in the form.</p>
+
+<h5>
+<a id="messageerror" class="anchor" href="#messageerror" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>message/error:</h5>
+
+<p><strong>pre</strong>: Pre HTML that will be prepended before the message/error text <code>&lt;div class="alert alert-info" role="alert"&gt;</code></p>
+
+<p><strong>post</strong>: Post HTML that will be prepended before the message/error text <code>&lt;/div&gt;</code></p>
+
+<h5>
+<a id="beforesubmit" class="anchor" href="#beforesubmit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>beforeSubmit:</h5>
+
+<p>Define the function that will be called before the ajax request is sent. You can assign return value <code>false</code> to stop the form to be submitted.</p>
+
+<h5>
+<a id="aftersubmit" class="anchor" href="#aftersubmit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>afterSubmit:</h5>
+
+<p>Define the function that will be called after the ajax request completes.
+Arguments of the request will be jqXHR or response and element respectively.</p>
+
+<h5>
+<a id="errorplacement" class="anchor" href="#errorplacement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>errorPlacement:</h5>
+
+<p>Function that will handle the error placement for the form.
+This function will be executed when the response <code>status</code> from server is <code>error</code>.
+Arguments of the request will be response and element respectively.</p>
+
+<h5>
+<a id="messageplacement" class="anchor" href="#messageplacement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>messagePlacement:</h5>
+
+<p>Function that will handle the message placement for the form.
+This function will be executed when the response <code>status</code> from server is <code>success</code>.
+Arguments of the request will be response and element respectively.</p>
+
+<h5>
+<a id="messageplacement-1" class="anchor" href="#messageplacement-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>messagePlacement:</h5>
+
+<p>Define the function that will be called on successful submission of form (Server Side: <code>"status":"success"</code>).</p>
+
+<h5>
+<a id="onerror" class="anchor" href="#onerror" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>onError:</h5>
+
+<p>Define the function that will be called on error in submission of form. (Server Side: <code>"status":"error"</code>).</p>
+
+<h5>
+<a id="onfail" class="anchor" href="#onfail" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>onFail:</h5>
+
+<p>Define the function that will be called on server error. (No Response or invalid response from server)</p>
+
+<h3>
+<a id="response-from-server-side" class="anchor" href="#response-from-server-side" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Response From Server Side</h3>
+
+<h5>
+<a id="display-error-messages" class="anchor" href="#display-error-messages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Display error messages</h5>
+
+<p>Display error messages for each inputs (works only in case of validator)</p>
+
+<div class="highlight highlight-source-json"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>error<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>elements<span class="pl-pds">"</span></span> : {
+        <span class="pl-s"><span class="pl-pds">"</span>user_name<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>User name already exists. Please select another user name.<span class="pl-pds">"</span></span>
+    }
+}</pre></div>
+
+<p>Here, <code>elements</code> will contain the object of each field (name attribute in html) with error message.</p>
+
+<p>Example (in case of <strong>Laravel</strong> users using Validator):</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">return</span> <span class="pl-c1">\</span><span class="pl-c1">Response</span><span class="pl-k">::</span>json([<span class="pl-s"><span class="pl-pds">'</span>status<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>elements<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-smi">$validator</span><span class="pl-k">-&gt;</span>errors()]);</span></pre></div>
+
+<p>Example (in case of <strong>CodeIgniter</strong> users using Validator):</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">return</span> <span class="pl-c1">\</span><span class="pl-c1">Response</span><span class="pl-k">::</span>json([<span class="pl-s"><span class="pl-pds">'</span>status<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>elements<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">form_validation</span><span class="pl-k">-&gt;</span>error_array()]);</span></pre></div>
+
+<p>Or, you can manually provide the response in json format.</p>
+
+<h5>
+<a id="redirect-page-to-another-page-on-success" class="anchor" href="#redirect-page-to-another-page-on-success" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redirect Page to another page on success</h5>
+
+<p>Sometimes we need to redirect the page on successful submit. Thus we can define <code>redirect</code> variable in response. Thus the page will be redirected to the specified url (or refreshed in case of blank url).</p>
+
+<div class="highlight highlight-source-js"><pre> {
+    <span class="pl-s"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>success|error<span class="pl-pds">"</span></span>,                 <span class="pl-c">// (required) - shows the form is submitted successfully</span>
+    <span class="pl-s"><span class="pl-pds">"</span>redirect<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>http://mysite.com/page2/<span class="pl-pds">"</span></span>,    <span class="pl-c">// (optional) - in case of success, the page is redirected to this url</span>
+    <span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Form Submitted, or has Error<span class="pl-pds">"</span></span>  <span class="pl-c">// (optional) - Shows the custom message/error on top of the form</span>
+ }</pre></div>
+
+<h5>
+<a id="update-the-elements-of-a-page" class="anchor" href="#update-the-elements-of-a-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update the Elements of a page</h5>
+
+<p>Sometimes in case of success, you can update the parts of the page rather than refreshing the whole page (most of us use this only).
+For this you have to add this variables <code>updateExtra</code>, <code>affectedElement</code>, <code>content</code> in response.</p>
+
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>success<span class="pl-pds">"</span></span>,               <span class="pl-c">// Status must be 'success'</span>
+    <span class="pl-s"><span class="pl-pds">"</span>updateExtra<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-c1">true</span>,               <span class="pl-c">// Shows that we need to update a part of web page</span>
+    <span class="pl-s"><span class="pl-pds">"</span>affectedElement<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>.selector<span class="pl-pds">"</span></span>,    <span class="pl-c">// CSS Selector of the element to be updated</span>
+    <span class="pl-s"><span class="pl-pds">"</span>content<span class="pl-pds">"</span></span> <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>&lt;h1&gt;Updated&lt;/h1&gt;<span class="pl-pds">"</span></span>      <span class="pl-c">// New Content in HTML Format</span>
+ }</pre></div>
+
+<p>By using this the <code>'content'</code> html will be replaced in <code>'.selector'</code> element.</p>
+
+<h3>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contact</h3>
+
+<p>You can tweet me at <a href="https://twitter.com/TarunMangukiya">@tarunmangukiya</a> for additional information.</p>
+
+<p><strong>Enjoy guys, don't forget to provide your suggestions and reviews for continious improvements.</strong></p>
+
+      <footer class="site-footer">
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
