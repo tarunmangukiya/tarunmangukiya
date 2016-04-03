@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://tarunmangukiya.github.io/sitemap.xml
